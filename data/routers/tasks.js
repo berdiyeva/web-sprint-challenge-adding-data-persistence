@@ -1,12 +1,12 @@
 const express = require("express");
-const Project = require("../models/project");
+const Tasks = require("../models/tasks");
 
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
 	try {
-		const projects = await Project.get();
-		res.json(projects);
+		const tasks = await Tasks.get();
+		res.json(tasks);
 	} catch (err) {
 		next(err);
 	}
@@ -14,13 +14,13 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
 	try {
-		const project = await Project.getById(req.params.id);
-		if (!project) {
+		const task = await Tasks.getById(req.params.id);
+		if (!task) {
 			return res.status(404).json({
-				message: "The project not found.",
+				message: "The task not found.",
 			});
 		}
-		res.json(project);
+		res.json(task);
 	} catch (err) {
 		next(err);
 	}
