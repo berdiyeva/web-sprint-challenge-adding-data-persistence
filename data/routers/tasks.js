@@ -26,4 +26,14 @@ router.get("/:id", async (req, res, next) => {
 	}
 });
 
+router.post("/", async (req, res, next) => {
+	try {
+		// const pojectData = req.body;
+		const newTask = await Tasks.add(req.body);
+		res.json(newTask);
+	} catch (err) {
+		next(err);
+	}
+});
+
 module.exports = router;
