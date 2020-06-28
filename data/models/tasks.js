@@ -9,7 +9,7 @@ function getById(id) {
 }
 
 function add(task) {
-	return db("task")
+	return db("tasks")
 		.insert(task)
 		.then((id) => {
 			return getById(id[0]);
@@ -19,5 +19,5 @@ function add(task) {
 module.exports = {
 	get,
 	getById,
-	add
+	add,
 };

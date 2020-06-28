@@ -19,8 +19,16 @@ function add(project) {
 function getResourceByProject(id) {
 	return db("project as p")
 		.where("p.id", id)
-		.join("resources as r", "r.project_id", "p.id")
+		.join("project_resources as pr", "pr.project_id", "p.id")
+		.join("resources as r", "pr.resource_id", "r.id")
 		.select("r.name", "r.description");
+}
+
+function getTaskByProject(id) {
+	return db("project as p")
+		.where("p.id", id)
+		.join("tasks as t", "t.project_id", "p.id")
+		.select("p.name", "t.description", "t.notes");
 }
 
 module.exports = {
@@ -28,4 +36,5 @@ module.exports = {
 	getById,
 	add,
 	getResourceByProject,
+	getTaskByProject,
 };

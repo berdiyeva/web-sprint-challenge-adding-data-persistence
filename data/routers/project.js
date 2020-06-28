@@ -1,6 +1,5 @@
 const express = require("express");
 const Project = require("../models/project");
-const project = require("../models/project");
 
 const router = express.Router();
 
@@ -29,7 +28,6 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
 	try {
-		// const pojectData = req.body;
 		const newProject = await Project.add(req.body);
 		res.json(newProject);
 	} catch (err) {
@@ -39,13 +37,27 @@ router.post("/", async (req, res, next) => {
 
 router.get("/:id/resources", async (req, res, next) => {
 	try {
-		const resource = await Project.getResourceByProject(id);
+		const [resource] = await Project.getResourceByProject(req.params.id);
 		if (!resource) {
 			return res.status(404).json({
 				message: "The resource not found.",
 			});
 		}
 		res.json(resource);
+	} catch (err) {
+		next(err);
+	}
+});
+
+router.get("/:id/tasks", async (req, res, next) => {
+	try {
+		const tasks = await Project.getTaskByProject(req.params.id);
+		if (!tasks) {
+			return res.status(404).json({
+				message: "The tasks are not found.",
+			});
+		}
+		res.json(tasks);
 	} catch (err) {
 		next(err);
 	}

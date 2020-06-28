@@ -28,9 +28,22 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
 	try {
-		// const pojectData = req.body;
 		const newResource = await Resources.add(req.body);
 		res.json(newResource);
+	} catch (err) {
+		next(err);
+	}
+});
+
+router.get("/:id/projects", async (req, res, next) => {
+	try {
+		const [projects] = await Resources.getProjectsByResource(req.params.id);
+		if (!projects) {
+			return res.status(404).json({
+				message: "The projects are not found.",
+			});
+		}
+		res.json(projects);
 	} catch (err) {
 		next(err);
 	}
