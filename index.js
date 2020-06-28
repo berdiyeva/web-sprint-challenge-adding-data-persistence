@@ -1,4 +1,6 @@
 const express = require("express");
+var cors = require("cors");
+
 const welcomeRouter = require("./data/welcome/welcome");
 const projectRouter = require("./data/routers/project");
 const tasksRouter = require("./data/routers/tasks");
@@ -8,6 +10,7 @@ const server = express();
 const port = process.env.PORT || 4000;
 
 server.use(express.json());
+server.use(cors());
 
 server.use("/", welcomeRouter);
 server.use("/api/projects", projectRouter);

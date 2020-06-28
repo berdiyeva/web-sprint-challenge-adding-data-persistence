@@ -19,8 +19,11 @@
 	},
 	"homepage": "https://github.com/berdiyeva/web-sprint-challenge-adding-data-persistence#readme",
 	"dependencies": {
+		"axios": "^0.19.2",
+		"cors": "^2.8.5",
 		"express": "^4.17.1",
 		"knee": "0.0.7",
+		"react-router-dom": "^5.2.0",
 		"sqlite3": "^4.2.0"
 	},
 	"devDependencies": {
