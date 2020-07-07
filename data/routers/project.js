@@ -63,4 +63,28 @@ router.get("/:id/tasks", async (req, res, next) => {
 	}
 });
 
+router.delete("/:id", async (req, res, next) => {
+	try {
+		const project = await Project.deleteProject(req.params.id);
+	
+		res.json({
+			message: "The project was removed."
+		});
+	} catch (err) {
+		next(err);
+	
+	}
+})
+
+router.put("/:id", async (req, res, next) => {
+	try {
+		// const {id} = req.params;
+		// const changes = req.body;
+		const project = await Project.updateProject(req.params.id, req.body)
+		res.json(project)
+	} catch (err) {
+		next(err)
+	}
+})
+
 module.exports = router;

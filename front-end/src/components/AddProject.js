@@ -2,61 +2,67 @@ import React from "react";
 import axios from "axios";
 
 export default class AddProject extends React.Component {
-	state = {
-		name: "",
-		description: "",
-		dompleted: true,
-	};
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			name: "",
+			description: "",
+			completed: false,
+		};
+	}
 
 	handleChange = (e) => {
-		this.setState({ value: e.target.value });
+		this.setState({ [e.target.name]: e.target.value });
 	};
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		const project = {
-			name: this.state.name,
-			decsription: this.state.decsription,
-			copmleted: this.state.completed,
-		};
-
+		console.log(this.state);
 		axios
-			.post(`http://localhost:4000/api/projects`, { project })
+			.post(`http://localhost:8000/api/projects`, this.state)
 			.then((res) => {
 				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
 			});
 	};
 
 	render() {
+		const { name, description } = this.state;
+
 		return (
-			<form onSubmit={this.handleSubmit} className='form'>
-				<label>
-					Project name
-					<input
+			<form onSubmit={this.handleSubmit} className=' form'>
+				<label className='form-item'>
+					Name
+					<input className='form-input'
 						type='text'
 						name='name'
-						value={this.state.name}
+						value={name}
 						onChange={this.handleChange}
 					/>
 				</label>
-				<label>
-					Project description
-					<input
+				<label className='form-item'>
+					Description
+					<input className='form-input'
 						type='text'
 						name='description'
-						value={this.state.description}
+						value={description}
 						onChange={this.handleChange}
 					/>
 				</label>
-				<label>
-					Completed
+				{/* <label>
+					Status
 					<input
 						name='completed'
-						value={this.state.completed}
+						value={completed}
 						onChange={this.handleChange}
 					/>
-				</label>
-				<button type='submit'>Add</button>
+				</label> */}
+				<button type='submit' className='btn'>
+					Add
+				</button>
 			</form>
 		);
 	}

@@ -42,37 +42,53 @@ body {
 	padding: 0;
 }
 
-.list {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	width: 75%;
-	margin: auto;
-}
-.list-items {
-	border: 1px solid rgb(163, 190, 206);
+ul li {
 	list-style: none;
-	margin: 5px;
-	min-width: 200px;
+}
+
+.container {
+	/* border: solid red; */
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 50vh;
+}
+
+.box {
+	border: 2px solid rgb(95, 158, 158);
+	flex-basis: 30%;
+	box-sizing: border-box;
+	margin: 10px;
+	height: 20%;
 }
 
 .form {
+	/* border: solid yellow; */
+	height: 15vh;
 	display: flex;
 	flex-direction: column;
- 
-	margin: auto;
+	align-items: center;
+}
+.form-item {
+	/* border: solid blue; */
+	box-sizing: border-box;
+	margin: 10px;
+	height: 30%;
+	width: 50%;
+	text-align: left;
+}
+.form-input {
+	border: 2px solid rgb(95, 158, 158);
+	float: right;
 	width: 70%;
 }
-.form input {
-	border: 1px solid rgb(163, 190, 206);
-	margin: 5px;
-  width: 50%;
-  
-}
-.form label{
-text-align: start;
-}
-.form button {
-	width: 30%;
-	margin: auto;
+.btn {
+	background-color: rgb(136, 245, 245);
+	border: 1px solid rgb(95, 158, 158);
+	border-radius: 3px;
+	width: 10%;
+	height: 30%;
+	margin: 10px;
 }

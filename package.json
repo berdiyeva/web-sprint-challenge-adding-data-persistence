@@ -1,32 +1,21 @@
 {
-	"name": "web-sprint-challenge-adding-data-persistence",
-	"version": "1.0.0",
-	"description": "**Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**",
-	"main": "index.js",
-	"scripts": {
-		"server": "nodemon index.js",
-		"start": "node index"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/berdiyeva/web-sprint-challenge-adding-data-persistence.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/berdiyeva/web-sprint-challenge-adding-data-persistence/issues"
-	},
-	"homepage": "https://github.com/berdiyeva/web-sprint-challenge-adding-data-persistence#readme",
-	"dependencies": {
-		"axios": "^0.19.2",
-		"cors": "^2.8.5",
-		"express": "^4.17.1",
-		"knee": "0.0.7",
-		"react-router-dom": "^5.2.0",
-		"sqlite3": "^4.2.0"
-	},
-	"devDependencies": {
-		"nodemon": "^2.0.4"
-	}
+  "name": "web-sprint-challenge-adding-data-persistence",
+  "version": "1.0.0",
+  "description": "**Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knee": "0.0.7",
+    "react-router-dom": "^5.2.0",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }

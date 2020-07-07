@@ -31,10 +31,22 @@ function getTaskByProject(id) {
 		.select("p.name", "t.description", "t.notes");
 }
 
+function deleteProject(id) {
+	return db("project as p")
+	.where("p.id", id)
+	.del()
+}
+
+function updateProject(id, projectToUpdate) {
+	return db("project as p").where("p.id", id).update(projectToUpdate)
+}
+
 module.exports = {
 	get,
 	getById,
 	add,
 	getResourceByProject,
 	getTaskByProject,
+	deleteProject,
+	updateProject
 };

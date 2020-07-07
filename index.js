@@ -7,7 +7,7 @@ const tasksRouter = require("./data/routers/tasks");
 const resourcesRouter = require("./data/routers/resources");
 
 const server = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 
 server.use(express.json());
 server.use(cors());
