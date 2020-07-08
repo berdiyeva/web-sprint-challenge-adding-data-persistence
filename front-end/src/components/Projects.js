@@ -8,8 +8,7 @@ export default class Projects extends React.Component {
 		projects: [],
 	};
 
-
-	componentDidMount() {
+	getProjects = () => {
 		axios.get("http://localhost:8000/api/projects").then((res) => {
             console.log(res.data)
 			const projects = res.data;
@@ -17,8 +16,18 @@ export default class Projects extends React.Component {
 		});
 	}
 
+
+	componentDidMount() {
+		this.getProjects()
+	}
+
+	// componentDidUpdate() {
+	// 	this.getProjects()
+	// }
+
+
 	 handleDelete = (id) => {
-	axios.delete(`http://localhost:8000/api/projects${id}`)
+	axios.delete(`http://localhost:8000/api/projects/${id}`)
 		.then((res) => {
 			console.log("Item was deleted", res);
 			// this.setProjects(this.projects.filter((item) => item.id !== id));
@@ -27,15 +36,16 @@ export default class Projects extends React.Component {
 			console.log(error)})
 	}
 
-	handleUpdate = id => {
-		axios.put(`http://localhost:8000/api/projects${id}`, newProject)
-	}
+	// handleUpdate = id => {
+	// 	axios.put(`http://localhost:8000/api/projects${id}`, newProject)
+	// 	.then(res => )
+	// }
 
 	render() {
 		return (
 			<ul className="container">
 				{this.state.projects.map((project) => (
-					<li className="box" key={project.id}><Project project={project}/><button onClick={()=>this.handleDelete()}>X</button></li>
+					<li className="box" key={project.id}><Project project={project}/><button onClick={()=>this.handleDelete(project.id)}>X</button></li>
 				))}
 			</ul>
 		);

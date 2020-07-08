@@ -58,10 +58,10 @@ ul li {
 
 .box {
 	border: 2px solid rgb(95, 158, 158);
-	flex-basis: 30%;
+	flex-basis: 40%;
 	box-sizing: border-box;
 	margin: 10px;
-	height: 20%;
+	min-height: 120px;
 }
 
 .form {
